@@ -59,19 +59,19 @@
       thisProduct.data = data;
       thisProduct.renderInMenu();
       console.log('new Product:', thisProduct);
-    }
+    };
+
     renderInMenu(){
       const thisProduct = this;
       //generate HTML based on template
       const generatedHTML = templates.menuProduct(thisProduct.data);
-      console.log ('generetedHTML')
       //create element using utils.createElementFromHTML
-     // thisProduct.element = utils.createDOMFromHTML(generatedHTML);
+      thisProduct.element = utils.createDOMFromHTML(generatedHTML);
       // find menu container
-      //const menuContainer = document.querySelector(selector.containerOf.menu);
+      const menuContainer = document.querySelector(selector.containerOf.menu);
       //add element to menu
-      //menuContainer.appendChild(thisProduct.element);
-    }
+      menuContainer.appendChild(thisProduct.element);
+    },
   };
   
   const app = {

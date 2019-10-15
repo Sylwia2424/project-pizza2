@@ -28,8 +28,15 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {},
+    "dependencies": {
+        "@babel/preset-react": "^7.0.0",
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0"
+    },
     "devDependencies": {
+        "@babel/core": "^7.0.0-0",
+        "@babel/preset-env": "^7.6.2",
+        "babel-loader": "^7.1.5",
         "autoprefixer-cli": "^1.0.0",
         "browser-sync": "^2.26.3",
         "copyfiles": "^2.1.0",
