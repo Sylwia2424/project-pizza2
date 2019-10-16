@@ -82,7 +82,7 @@
       console.log(button);
       /* START: click event listener to trigger */
       button.addEventListener('click', function(){
-        console.log('clicked')
+        console.log('clicked');
       
         /* prevent default action for event */
         event.preventDefault();
