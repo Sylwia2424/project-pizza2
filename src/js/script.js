@@ -78,28 +78,28 @@
       const thisProduct = this;
         
       /* find the clickable trigger (the element that should react to clicking) */
-      const button = thisProduct.element.querySelectorAll(select.menuProduct.clickable);
-      console.log(button)
+      const button = thisProduct.element.querySelector(select.menuProduct.clickable);
+      console.log(button);
       /* START: click event listener to trigger */
       button.addEventListener('click', function(){
-        console.log(clicked);
+        
       
         /* prevent default action for event */
         event.preventDefault();
         /* toggle active class on element of thisProduct */
-        button.classList.addClass('active');
+        button.classList.add('active');
         /* find all active products */
-        //const allActive = thisProduct.element.querySelectorAll('clickable');
+        const allActive = thisProduct.element.querySelectorAll('button');
         /* START LOOP: for each active product */
-        //for (let allActive of thisProduct.element){
+        for (let active of allActive){
         /* START: if the active product isn't the element of thisProduct */
-          //if ( allActive !== thisProduct.element){
+          if (active !== allActive){
           /* remove class active for the active product */
-          //select.menuProduct.clickable.remove ('active'); 
+            button.classList.remove ('active'); 
             /* END: if the active product isn't the element of thisProduct */
-          //}
+          }
           /* END LOOP: for each active product */
-        //}
+        }
         /* END: click event listener to trigger */
       });
     }
