@@ -82,20 +82,20 @@
       console.log(button);
       /* START: click event listener to trigger */
       button.addEventListener('click', function(){
-        
+        console.log('clicked')
       
         /* prevent default action for event */
         event.preventDefault();
         /* toggle active class on element of thisProduct */
-        button.classList.add('active');
+        thisProduct.element.classList.add('active');
         /* find all active products */
         const allActive = thisProduct.element.querySelectorAll('button');
         /* START LOOP: for each active product */
         for (let active of allActive){
         /* START: if the active product isn't the element of thisProduct */
-          if (active !== allActive){
+          if (thisProduct != active){
           /* remove class active for the active product */
-            button.classList.remove ('active'); 
+            active.classList.remove('active'); 
             /* END: if the active product isn't the element of thisProduct */
           }
           /* END LOOP: for each active product */
