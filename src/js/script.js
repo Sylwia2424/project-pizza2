@@ -70,7 +70,7 @@
       //create element using utils.createElementFromHTML
       thisProduct.element = utils.createDOMFromHTML(generatedHTML);
       // find menu container
-      const menuContainer = document.querySelector(selector.containerOf.menu);
+      const menuContainer = document.querySelector(select.containerOf.menu);
       //add element to menu
       menuContainer.appendChild(thisProduct.element);
     }
@@ -78,30 +78,32 @@
       const thisProduct = this;
         
       /* find the clickable trigger (the element that should react to clicking) */
-      const button = document.querySelectorAll(thisProduct.element);
+      const button = thisProduct.element.querySelectorAll(select.menuProduct.clickable);
+      console.log(button)
       /* START: click event listener to trigger */
-      button.addEventListener('click', function(click){
-        console.log('clicked');
+      button.addEventListener('click', function(){
+        console.log(clicked);
       
         /* prevent default action for event */
-        click.preventDefault();
+        event.preventDefault();
         /* toggle active class on element of thisProduct */
-        thisProduct.element.add('active');
+        button.classList.addClass('active');
         /* find all active products */
-        const allActive = document.querySelectorAll('active');
+        //const allActive = thisProduct.element.querySelectorAll('clickable');
         /* START LOOP: for each active product */
-        for (let active of allActive){
+        //for (let allActive of thisProduct.element){
         /* START: if the active product isn't the element of thisProduct */
-          if ( active !== thisProduct.element){
+          //if ( allActive !== thisProduct.element){
           /* remove class active for the active product */
-            active.remove ('active'); 
+          //select.menuProduct.clickable.remove ('active'); 
             /* END: if the active product isn't the element of thisProduct */
-          }
+          //}
           /* END LOOP: for each active product */
-        }
+        //}
         /* END: click event listener to trigger */
       });
     }
+
   }
   
   const app = {
