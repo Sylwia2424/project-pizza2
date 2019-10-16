@@ -89,7 +89,7 @@
         /* toggle active class on element of thisProduct */
         thisProduct.element.classList.add('active');
         /* find all active products */
-        const allActive = thisProduct.element.querySelectorAll('button');
+        let allActive = '';
         /* START LOOP: for each active product */
         for (let active of allActive){
         /* START: if the active product isn't the element of thisProduct */
