@@ -89,11 +89,12 @@
         /* toggle active class on element of thisProduct */
         thisProduct.element.classList.add('active');
         /* find all active products */
-        let allActive = '';
+        const activeLink = document.querySelectorAll('article.product.active');
+        console.log(activeLink);
         /* START LOOP: for each active product */
-        for (let active of allActive){
+        for (let active of activeLink){
         /* START: if the active product isn't the element of thisProduct */
-          if (thisProduct != active){
+          if (thisProduct.element != active){ 
           /* remove class active for the active product */
             active.classList.remove('active'); 
             /* END: if the active product isn't the element of thisProduct */
