@@ -81,6 +81,7 @@
     getElements(){
       const thisProduct = this;
       
+      //thisProduct.data.price = thisProduct.element.querySelectorAll(select.menuProduct.data.price)
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
@@ -144,20 +145,27 @@
       const formData = utils.serializeFormToObject(thisProduct.form);
       console.log('formData', formData);
       /* set variable price to equal thisProduct.data.price */
-      let price = 'thisProduct.data.price';
+      let price = (thisProduct.priceElem);
+      console.log(price);
       /* START LOOP: for each paramId in thisProduct.data.params */
       /* save the element in thisProduct.data.params with key paramId as const param */
       for( let paramId in 'thisProduct.data.params'){
-        const param = {paramId};
+        const param = {paramId}; 
+        console.log(param);
+
         /* START LOOP: for each optionId in param.options */
         /* save the element in param.options with key optionId as const option */
-        for( let optionId in param.options){
+        for( let optionId in 'param.options'){
           const option = {optionId};
+          console.log(option);
+
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
           /* START IF: if option is selected and option is not default */
+          console.log(optionSelected);
           if(optionSelected && !option.default){
             /* add price of option to variable price */
-            let newPrice =+ 1;
+            let newPrice =  option - price;
+
             console.log (newPrice);
             /* END IF: if option is selected and option is not default */
             /* START ELSE IF: if option is not selected and option is default */
@@ -171,10 +179,9 @@
           /* END LOOP: for each optionId in param.options */
         }
         /* END LOOP: for each paramId in thisProduct.data.params */
-
-        /* set the contents of thisProduct.priceElem to be the value of variable price */
-        thisProduct.priceElem = price;
       }
+      /* set the contents of thisProduct.priceElem to be the value of variable price */
+      thisProduct.priceElem == price;
 
     }
   }
