@@ -150,13 +150,13 @@
       /* START LOOP: for each paramId in thisProduct.data.params */
       /* save the element in thisProduct.data.params with key paramId as const param */
       for( let paramId in thisProduct.data.params){
-        const param = {paramId}; 
+        const param = paramId; 
         console.log(param);
 
         /* START LOOP: for each optionId in param.options */
         /* save the element in param.options with key optionId as const option */
         for( let optionId in 'param.options'){
-          const option = {optionId};
+          const option = optionId;
           console.log(option);
 
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
@@ -164,14 +164,14 @@
           console.log(optionSelected);
           if(optionSelected && !option.default){
             /* add price of option to variable price */
-            let newPrice =  option - price;
+            let newPrice =+ price[optionSelected];
 
             console.log (newPrice);
             /* END IF: if option is selected and option is not default */
             /* START ELSE IF: if option is not selected and option is default */
           }else if(optionSelected && option.default){
             /* deduct price of option from price */
-            let newPrice =- 1;  
+            let newPrice = price - option.price;  
             /* END ELSE IF: if option is not selected and option is default */
             console.log (newPrice);
           }
@@ -194,8 +194,8 @@
         new Product(productData, thisApp.data.products[productData]);
       }
 
-      const testProduct = new Product();
-      console.log('testProduct:', testProduct);
+      //const testProduct = new Product();
+      //console.log('testProduct:', testProduct);
     },
     initData: function(){
       const thisApp = this;
