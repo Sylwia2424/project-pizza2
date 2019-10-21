@@ -145,11 +145,11 @@
       const formData = utils.serializeFormToObject(thisProduct.form);
       console.log('formData', formData);
       /* set variable price to equal thisProduct.data.price */
-      let price = (thisProduct.priceElem);
+      let price = thisProduct.data.price;
       console.log(price);
       /* START LOOP: for each paramId in thisProduct.data.params */
       /* save the element in thisProduct.data.params with key paramId as const param */
-      for( let paramId in 'thisProduct.data.params'){
+      for( let paramId in thisProduct.data.params){
         const param = {paramId}; 
         console.log(param);
 
