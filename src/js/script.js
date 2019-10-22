@@ -164,16 +164,16 @@
           console.log(optionSelected);
           if(optionSelected && !option.default){
             /* add price of option to variable price */
-            let newPrice =+ price[optionSelected];
+            price =+ price[optionSelected];
 
-            console.log (newPrice);
+            console.log (price);
             /* END IF: if option is selected and option is not default */
             /* START ELSE IF: if option is not selected and option is default */
-          }else if(optionSelected && option.default){
+          }else if(!optionSelected && option.default){
             /* deduct price of option from price */
-            let newPrice = price - option.price;  
+            price =- price[optionSelected];  
             /* END ELSE IF: if option is not selected and option is default */
-            console.log (newPrice);
+            console.log (price);
           }
 
           /* END LOOP: for each optionId in param.options */
@@ -181,7 +181,7 @@
         /* END LOOP: for each paramId in thisProduct.data.params */
       }
       /* set the contents of thisProduct.priceElem to be the value of variable price */
-      thisProduct.priceElem == price;
+      thisProduct.priceElem = price;
 
     }
   }
