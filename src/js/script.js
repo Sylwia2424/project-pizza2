@@ -160,23 +160,23 @@
           console.log(optionSelected);
           if(optionSelected && !option.default){
             /* add price of option to variable price */
-            price =+ option.price;
+            price += option.price;
 
             console.log (price);
             /* END IF: if option is selected and option is not default */
             /* START ELSE IF: if option is not selected and option is default */
           }else if(!optionSelected && option.default){
             /* deduct price of option from price */
-            price =- option.price;  
+            price -= option.price;  
             /* END ELSE IF: if option is not selected and option is default */
             console.log (price);
-            const elements = param.options[optionId];
-            if(optionSelected && option.default){
-              const image = thisProduct.imageWrapper.querySelectorAll('.optionId-paramId');
-              image.classList.add(classNames.menuProduct.imageVisible);
+            /*if(optionSelected && option.default){
+              optionSelected = thisProduct.imageWrapper('.optionId-paramId')
+              elements.add(classNames.menuProduct.imageVisible);
+              //image.classList.add(classNames.menuProduct.imageVisible);
             } else{
               elements.classList.add(classNames.menuProduct.imageVisible);
-            } 
+            } */
           }
           /* END LOOP: for each optionId in param.options */
         }
