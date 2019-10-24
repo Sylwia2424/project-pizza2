@@ -170,15 +170,20 @@
             price =- option.price;  
             /* END ELSE IF: if option is not selected and option is default */
             console.log (price);
+            const elements = param.options[optionId];
+            if(optionSelected && option.default){
+              const image = thisProduct.imageWrapper.querySelectorAll('.optionId-paramId');
+              image.classList.add(classNames.menuProduct.imageVisible);
+            } else{
+              elements.classList.add(classNames.menuProduct.imageVisible);
+            } 
           }
-
           /* END LOOP: for each optionId in param.options */
         }
         /* END LOOP: for each paramId in thisProduct.data.params */
       }
       /* set the contents of thisProduct.priceElem to be the value of variable price */
-      thisProduct.priceElem = price;
-
+      thisProduct.priceElem.innerHTML = price;
     }
   }
   
