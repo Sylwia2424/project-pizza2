@@ -207,6 +207,8 @@
       thisWidget.getElements(element);
       thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
+      thisWidget.initActions();      
+
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
 
@@ -233,18 +235,21 @@
     }
     initActions(){
       const thisWidget = this;
-      for(let input of thisWidget){
-        input.addEventListener('change', function(){
-          input.setValue();
+      /*for(let input of thisWidget){
+        thisWidget.input.addEventListener('change', function(){
+          thisWidget.setValue(input);
         });
-      }
+      }*/
+      thisWidget.input.addEventListener('change', function(){
+        thisWidget.setValue(thisWidget.value);
+      });
       thisWidget.linkDecrease.addEventListener('click', function(event){
         event.preventDefault();
-        thisWidget.value.setValue()-1;
+        thisWidget.setValue(thisWidget.value - 1);
       });
       thisWidget.linkIncrease.addEventListener('click', function(event){
         event.preventDefault();
-        thisWidget.value.setValue()+1;
+        thisWidget.setValue(thisWidget.value + 1);
       });
     }
     announce(){
