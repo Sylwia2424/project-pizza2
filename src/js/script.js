@@ -170,13 +170,14 @@
             price -= option.price;  
             /* END ELSE IF: if option is not selected and option is default */
             console.log (price);
-            /*if(optionSelected && option.default){
-              optionSelected = thisProduct.imageWrapper('.optionId-paramId')
-              elements.add(classNames.menuProduct.imageVisible);
+            const image = thisProduct.imageWrapper.paramId-optionId;
+            if(optionSelected && thisProduct.imageWrapper){
+              image.classList.add(classNames.menuProduct.imageVisible);
               //image.classList.add(classNames.menuProduct.imageVisible);
+              console.log(thisProduct.imageWrapper);
             } else{
-              elements.classList.add(classNames.menuProduct.imageVisible);
-            } */
+              image.classList.remove(classNames.menuProduct.imageVisible);
+            } 
           }
           /* END LOOP: for each optionId in param.options */
         }
