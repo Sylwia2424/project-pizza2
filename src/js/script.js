@@ -228,20 +228,20 @@
 
       /*TODO: Add validation*/
 
-      if(thisWidget.value != newValue && settings.amountWidget.defaultMax >= newValue >= settings.amountWidget.defaultMin){
+      if(thisWidget.value !== newValue && settings.amountWidget.defaultMax >= newValue >= settings.amountWidget.defaultMin ){
         thisWidget.announce();
       }
       thisWidget.input.value = thisWidget.value;
     }
     initActions(){
       const thisWidget = this;
-      /*for(let input of thisWidget){
-        thisWidget.input.addEventListener('change', function(){
-          thisWidget.setValue(input);
+      /*for(let input of thisWidget.input){
+          input.addEventListener('change', function(){
+          thisWidget.setValue();
         });
       }*/
       thisWidget.input.addEventListener('change', function(){
-        thisWidget.setValue(thisWidget.value);
+        thisWidget.setValue(thisWidget.input.value);
       });
       thisWidget.linkDecrease.addEventListener('click', function(event){
         event.preventDefault();
