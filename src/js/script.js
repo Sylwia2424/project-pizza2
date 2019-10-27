@@ -266,8 +266,10 @@
 
       /*TODO: Add validation*/
 
-      if(thisWidget.value !== newValue && newValue <= settings.amountWidget.defaultMax && newValue >= settings.amountWidget.defaultMin ){
+      if(thisWidget.value !== newValue && settings.amountWidget.defaultMax >= newValue >= settings.amountWidget.defaultMin ){
         thisWidget.announce();
+        thisWidget.value = newValue;
+
       }
       thisWidget.input.value = thisWidget.value;
     }
