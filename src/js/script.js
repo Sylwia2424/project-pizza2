@@ -167,6 +167,7 @@
 
         input.addEventListener('change', function(){
           thisProduct.processOrder();
+          thisProduct.addToCart();
         });
       }
       
@@ -237,6 +238,11 @@
         thisProduct.processOrder();
       });
     }
+    addToCart(){
+      const thisProduct = this;
+
+      app.cart.add(thisProduct);
+    }
   }
 
   class AmountWidget{
@@ -268,22 +274,17 @@
       console.log(newValue);
       /*TODO: Add validation*/
 
-      /*if(thisWidget.value = newValue){
-    
-        settings.amountWidget.defaultMax >= thisWidget.value >= settings.amountWidget.defaultMin;
+      if(settings.amountWidget.defaultMax >= newValue && newValue  >= settings.amountWidget.defaultMin){
+        thisWidget.value = newValue;
         thisWidget.announce();
-        //thisWidget.value = newValue;
 
-      }*/
+      }
       thisWidget.input.value = thisWidget.value;
+      
     }
     initActions(){
       const thisWidget = this;
-      /*for(let input of thisWidget.input){
-          input.addEventListener('change', function(){
-          thisWidget.setValue();
-        });
-      }*/
+
       thisWidget.input.addEventListener('change', function(){
         thisWidget.setValue(thisWidget.input.value);
       });
@@ -325,6 +326,10 @@
       thisCart.dom.toggleTrigger.addEventListener('click', function(){
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
+    }
+    add(menuProduct){
+      // const thisCart = this;
+      console.log('adding product', menuProduct);
     }
   }
 
