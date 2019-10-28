@@ -162,8 +162,9 @@
         event.preventDefault();
         thisProduct.processOrder();
       });
-      
+
       for(let input of thisProduct.formInputs){
+
         input.addEventListener('change', function(){
           thisProduct.processOrder();
         });
@@ -245,7 +246,8 @@
       thisWidget.getElements(element);
       thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
-      thisWidget.initActions();      
+      thisWidget.initActions();  
+      //thisWidget.input.value > thisWidget.input.defaultMin;    
 
       console.log('AmountWidget:', thisWidget);
       console.log('constructor arguments:', element);
@@ -263,14 +265,16 @@
       const thisWidget = this;
 
       const newValue = parseInt(value);
-
+      console.log(newValue);
       /*TODO: Add validation*/
 
-      if(thisWidget.value !== newValue && settings.amountWidget.defaultMax >= newValue >= settings.amountWidget.defaultMin ){
+      /*if(thisWidget.value = newValue){
+    
+        settings.amountWidget.defaultMax >= thisWidget.value >= settings.amountWidget.defaultMin;
         thisWidget.announce();
-        thisWidget.value = newValue;
+        //thisWidget.value = newValue;
 
-      }
+      }*/
       thisWidget.input.value = thisWidget.value;
     }
     initActions(){
@@ -306,6 +310,7 @@
 
       thisCart.products = [];
       thisCart.getElements(element);
+      thisCart.initActions();
       console.log('new Cart', thisCart);
     }
     getElements(element){
@@ -318,7 +323,7 @@
     initActions(){
       const thisCart = this;
       thisCart.dom.toggleTrigger.addEventListener('click', function(){
-        thisCart.dom.wrapper.toggle(classNames.cart.wrapperActive);
+        thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
     }
   }
