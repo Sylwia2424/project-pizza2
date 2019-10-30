@@ -212,7 +212,7 @@
             /* END ELSE IF: if option is not selected and option is default */
             console.log (price);
             //thisProduct.imageWrapper.classList.add('active')
-            //const image = thisProduct.imageWrapper.querySelector('.paramId-optionId');
+            const image = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
             if(optionSelected){
               if(!thisProduct.params[paramId]){
                 thisProduct.params[paramId] = {
@@ -222,11 +222,11 @@
               }
               thisProduct.params[paramId].options[optionId] = option.label;
               //const image2 = optionId.querySelector(image)
-              thisProduct.imageWrapper.classList.add(classNames.menuProduct.imageVisible);
-              //image2.classList.add(classNames.menuProduct.imageVisible);
+              //thisProduct.imageWrapper.classList.add(classNames.menuProduct.imageVisible);
+              image.classList.add(classNames.menuProduct.imageVisible);
               //console.log(thisProduct.imageWrapper);
             } else {
-              thisProduct.imageWrapper.classList.remove(classNames.menuProduct.imageVisible);
+              image.classList.remove(classNames.menuProduct.imageVisible);
               
             } 
           }
@@ -253,8 +253,8 @@
     }
     addToCart(){
       const thisProduct = this;
-      thisProduct.data.name = thisProduct.name;
-      thisProduct.amountWidget.value = thisProduct.amount;
+      thisProduct.name = thisProduct.data.name;
+      thisProduct.amount = thisProduct.amountWidget.value ;
       app.cart.add(thisProduct);
     }
   }
@@ -343,9 +343,9 @@
     }
     add(menuProduct){
       const thisCart = this;
-      const generatedHTML = templates.menuProduct(thisCart);
+      const generatedHTML = templates.cartProduct(menuProduct);
       const generatedDOM = utils.createDOMFromHTML(generatedHTML);
-      thisCart.dom.productList.add(generatedDOM);
+      thisCart.dom.productList.appendChild(generatedDOM);
 
       console.log('adding product', menuProduct);
     }
