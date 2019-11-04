@@ -210,9 +210,10 @@
             /* deduct price of option from price */
             price -= option.price;  
             /* END ELSE IF: if option is not selected and option is default */
-            console.log (price);
-            //thisProduct.imageWrapper.classList.add('active')
-            const image = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          }
+          //console.log (price);
+          const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+          for(let image of images){
             if(optionSelected){
               if(!thisProduct.params[paramId]){
                 thisProduct.params[paramId] = {
@@ -221,13 +222,9 @@
                 };
               }
               thisProduct.params[paramId].options[optionId] = option.label;
-              //const image2 = optionId.querySelector(image)
-              //thisProduct.imageWrapper.classList.add(classNames.menuProduct.imageVisible);
               image.classList.add(classNames.menuProduct.imageVisible);
-              //console.log(thisProduct.imageWrapper);
-            } else {
+            } else if(!optionSelected){
               image.classList.remove(classNames.menuProduct.imageVisible);
-              
             } 
           }
           /* END LOOP: for each optionId in param.options */
@@ -242,6 +239,7 @@
       /* set the contents of thisProduct.priceElem to be the value of variable price */
       //thisProduct.priceElem.innerHTML = price;
       thisProduct.priceElem.innerHTML = thisProduct.price;
+    
     }
     initAmountWidget(){
       const thisProduct = this;
@@ -370,8 +368,8 @@
     }
     remove(cartProduct){
       const thisCart = this;
-      const index = categories.indexOf(thisCart.products[cartProduct]);
-      categories.splice(indexOfThisCartProducts, index);
+      const index = thisCart.products.indexOf(cartProduct);
+      thisCart.products.splice(index);
       
       cartProduct.dom.wrapper.remove();
       thisCart.update();
