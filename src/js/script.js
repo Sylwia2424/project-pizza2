@@ -198,7 +198,7 @@
 
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
           /* START IF: if option is selected and option is not default */
-          console.log(optionSelected);
+          //console.log(optionSelected);
           if(optionSelected && !option.default){
             /* add price of option to variable price */
             price += option.price;
@@ -229,7 +229,7 @@
           }
           /* END LOOP: for each optionId in param.options */
         }
-        console.log(thisProduct.params);
+        //console.log(thisProduct.params);
         /* END LOOP: for each paramId in thisProduct.data.params */
       }
       /* multiply price by amount */
@@ -368,8 +368,8 @@
     }
     remove(cartProduct){
       const thisCart = this;
-      const index = thisCart.products.indexOf(cartProduct);
-      thisCart.products.splice(index);
+      const index = [thisCart.products].indexOf(cartProduct);
+      thisCart.products.splice(index, 1);
       
       cartProduct.dom.wrapper.remove();
       thisCart.update();
@@ -447,12 +447,13 @@
     }
     initActions(){
       const thisCartProduct = this;
-      thisCartProduct.dom.edit.addEventListener('click', function(event){
+      thisCartProduct.dom.edit.addEventListener('click', function(){
         event.preventDefault();
       });
-      thisCartProduct.dom.remove.addEventListener('click', function(event){
+      thisCartProduct.dom.remove.addEventListener('click', function(){
         event.preventDefault();
         thisCartProduct.remove();
+        //console.log();
       });
     }
   }
