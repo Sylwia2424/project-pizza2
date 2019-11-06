@@ -379,12 +379,12 @@
       let totalNumber = 0;
       let subtotalPrice = 0;
       for(let product of thisCart.products){
-        thisCart.totalPrice += product.price;
+        thisCart.subtotalPrice += product.price;
         thisCart.totalNumber += product.amount;
       }
-      thisCart.totalPrice = thisCart.totalPrice + thisCart.deliveryFee;
-      subtotalPrice = totalNumber;
-      thisCart.totalNumber = thisCart.totalPrice;
+      thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+      //thisCart.subtotalPrice = totalNumber;
+      //thisCart.totalNumber = thisCart.totalPrice;
       for(let key of thisCart.renderTotalsKeys){
         for(let elem of thisCart.dom[key]){
           elem.innerHTML = thisCart[key];
