@@ -384,7 +384,7 @@
       }
       thisCart.totalPrice = totalPrice + thisCart.deliveryFee;
       thisCart.subtotalPrice = totalPrice;
-      thisCart.totalNumber = thisCart.totalNumber;
+      thisCart.totalNumber = totalNumber;
       for(let key of thisCart.renderTotalsKeys){
         for(let elem of thisCart.dom[key]){
           elem.innerHTML = thisCart[key];
