@@ -344,6 +344,9 @@
       thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
       thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
       thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
+      thisCart.dom.address = thisCart.dom.form.querySelectorAll(select.cart.address).value;
+
+      thisCart.dom.phone = thisCart.dom.form.querySelectorAll(select.cart.phone).value;
 
       for(let key of thisCart.renderTotalsKeys){
         thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
@@ -368,21 +371,40 @@
     sendOrder(){
       const thisCart = this;
       const url = settings.db.url + '/' + settings.db.order;
-
+      console.log(url);
       const payload = {
-        address: 'test',
+        address: thisCart.dom.address,
         totalPrice: thisCart.totalPrice,
+        phone: thisCart.dom.phone,
+        subtotalPrice: thisCart.subtotalPrice,
+        totalNumber: thisCart.totalNumber,
+        deliveryFee: thisCart.deliveryFee,
+        products: [],
       };
+      for(let product of thisCart.products){
+        payload.products.push(product.getData());
 
+      }
+      console.log(payload);
       const options = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-      body: JSON.stringify(payload),
+        body: JSON.stringify(payload),
       };
-    }
 
+      fetch(url, options)
+        .then(function(rawResponse){
+          return rawResponse.json();
+        })
+        .then(function(parsedResponse){
+          console.log('parsedResopnse',parsedResponse);
+        });
+      
+      console.log(options);
+
+    }
     add(menuProduct){
       const thisCart = this;
       const generatedHTML = templates.cartProduct(menuProduct);
@@ -488,6 +510,18 @@
         //console.log();
       });
 
+    }
+    getData(){
+      const thisCartProduct = this;
+      thisCartProduct.data = {};
+      thisCartProduct.data.id = thisCartProduct.id;
+      thisCartProduct.data.amount = thisCartProduct.amount;
+      thisCartProduct.data.price = thisCartProduct.price;
+      thisCartProduct.data.priceSingle = thisCartProduct.priceSingle;
+      thisCartProduct.data.params = thisCartProduct.params;
+      thisCartProduct.data.address = thisCartProduct.address;
+
+      return thisCartProduct.data;
     }
   }
 
