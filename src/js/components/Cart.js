@@ -1,6 +1,6 @@
-import {select, classNames, settings, templates} from './settings.js';
-import utils from './components/utils.js';
-import CartProduct from './components/CartProduct.js';
+import {select, classNames, settings, templates} from './../settings.js';
+import utils from './../utils.js';
+import CartProduct from './CartProduct.js';
 
 
 class Cart{
@@ -12,7 +12,7 @@ class Cart{
     thisCart.initActions();
     thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
 
-    //console.log('new Cart', thisCart);
+    console.log('new Cart', thisCart);
   }
   getElements(element){
     const thisCart = this;
