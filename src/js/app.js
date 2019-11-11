@@ -1,10 +1,16 @@
-import {settings, select} from './settings.js';
+import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
-
+import Booking from './components/Booking.js';
 
 const app = {
-  /*initPages: function(){
+  initBooking: function(){
+    const thisApp = this;
+    thisApp.container = document.querySelector(select.containerOf.booking);
+    thisApp.booking = new Booking();
+
+  },
+  initPages: function(){
     const thisApp = this;
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
@@ -27,31 +33,31 @@ const app = {
         const clickedElement = this;
         event.preventDefault();
 
-        get page id from href attribute 
+        /*get page id from href attribute*/ 
         const id = clickedElement.getAttribute('href').replace('#', '');
-        run thisApp.activatePage with that id 
+        /*run thisApp.activatePage with that id */
         thisApp.activatePage(id);
 
-        change url hash 
-        /*window.location.hash = '#/' + id;
+        /*change url hash */
+        window.location.hash = '#/' + id;
       });
     }
   },
   activatePage: function(pageId){
-    thisApp = this;
+    const thisApp = this;
 
-    /*add class "active" to matching pages, remove from non-matching 
+    /*add class "active" to matching pages, remove from non-matching */
     for(let page of thisApp.pages){
       page.classList.toggle(classNames.pages.active, page.id == pageId);
     }
-    /*add class "active" to matching links, remove from non-matching 
-    /*for(let link of nav.Links){
+    /*add class "active" to matching links, remove from non-matching */
+    for(let link of thisApp.navLinks){
       link.classList.toggle(
         classNames.nav.active,
         link.getAttribute('href') == '#' + pageId
       );
     }
-  },*/
+  },
   initCart: function(){
     const thisApp = this;
     const cartElem = document.querySelector(select.containerOf.cart);
@@ -101,9 +107,10 @@ const app = {
     //console.log('settings:', settings);
     //console.laog('templates:', templates);
 
-    //thisApp.initPages();
+    thisApp.initPages();
     thisApp.initData();
     thisApp.initCart();
+    thisApp.initBooking();
   },
 };
 
