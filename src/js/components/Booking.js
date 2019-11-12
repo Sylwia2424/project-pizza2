@@ -1,13 +1,15 @@
-import { select } from './../settings.js';
+import { select, templates } from './../settings.js';
 import AmountWidget from './AmountWidget.js';
 
 
 class Booking{
   constructor(){
     const thisBooking = this;
-
+    
     thisBooking.initWidgets();
     thisBooking.render(container);
+    console.log('new Booking', thisBooking);
+
   }
   render(){
     const thisBooking = this;
@@ -23,7 +25,7 @@ class Booking{
     const thisBooking = this;
 
     thisBooking.peopleAmount = new AmountWidget(select.booking.peopleAmount);
-    thisBooking.peopleAmount = new AmountWidget(select.booking.hoursAmount);
+    thisBooking.hoursAmount = new AmountWidget(select.booking.hoursAmount);
   }
 }
 export default Booking;

@@ -1,4 +1,5 @@
 import {select, settings} from './../settings.js';
+//import Booking from './Booking.js';
 //import  from './components/utils.js';
 
 class AmountWidget{
@@ -9,7 +10,6 @@ class AmountWidget{
     thisWidget.value = settings.amountWidget.defaultValue;
     thisWidget.setValue(thisWidget.input.value);
     thisWidget.initActions();  
-
     //console.log('AmountWidget:', thisWidget);
     //console.log('constructor arguments:', element);
 
