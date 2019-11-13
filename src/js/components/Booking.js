@@ -1,4 +1,5 @@
 import {select, templates} from './../settings.js';
+import utils from './../utils.js';
 import AmountWidget from './AmountWidget.js';
 
 
@@ -17,7 +18,8 @@ class Booking{
     const generatedHTML = templates.bookingWidget();
     thisBooking.dom = {};
     thisBooking.dom.wrapper = container;
-    thisBooking.dom.wrapper = generatedHTML;
+    thisBooking.container = utils.createDOMFromHTML(generatedHTML);
+    thisBooking.dom.wrapper.appendChild(thisBooking.container);
     thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
   }
