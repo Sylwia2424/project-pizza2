@@ -1,10 +1,12 @@
 import {select, templates} from './../settings.js';
 import utils from './../utils.js';
 import AmountWidget from './AmountWidget.js';
-//import DatePicker from './DatePicker.js';
+import DatePicker from './DatePicker.js';
 
 class Booking{
   constructor(container){
+    //super(container, select.widgets.datePicker.wrapper);
+
     const thisBooking = this;
     
 
@@ -22,7 +24,7 @@ class Booking{
     container.appendChild(thisBooking.dom.wrapper.element);
     thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
-    thisBooking.dom.datePicker.wrapper = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
+    //thisBooking.dom.datePicker.wrapper = thisBooking.querySelector(select.widgets.datePicker.wrapper);
   }
   initWidgets(){
     const thisBooking = this;
