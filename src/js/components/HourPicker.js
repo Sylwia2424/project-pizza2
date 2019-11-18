@@ -12,12 +12,15 @@ class HourPicker extends BaseWidget{
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.datePicker.input);
     thisWidget.dom.output = thisWidget.dom.wrapper.querySelector(select.widgets.hourPicker.output);
     
-    //thisWidget.initPlugin();
+    thisWidget.initPlugin();
     thisWidget.parseValue();
     thisWidget.isValid();
     thisWidget.renderValue();
-  }
 
+  }
+  initPlugin(){
+    rangeSlider.create(thisWidget.dom.input);
+  }
   parseValue(value){
     return utils.numberToHour(value);
   }
@@ -27,8 +30,12 @@ class HourPicker extends BaseWidget{
   renderValue(){
     const thisWidget = this;
     thisWidget.value = thisWidget.dom.output;
+    thisWidget.dom.input.addEventListener('input', function(element){
+      thisWidget.value = thisWidget.element
+    })
+
+
+
   }
-
-
 }
 export default HourPicker;
