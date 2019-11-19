@@ -12,30 +12,36 @@ class HourPicker extends BaseWidget{
 
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.hourPicker.input);
     thisWidget.dom.output = thisWidget.dom.wrapper.querySelector(select.widgets.hourPicker.output);
-    
+    console.log(thisWidget.dom.output);
+    //thisWidget.parseValue();
+    //thisWidget.isValid();
+    //thisWidget.renderValue();
     thisWidget.initPlugin();
-    thisWidget.parseValue();
-    thisWidget.isValid();
-    thisWidget.renderValue();
-    //thisWidget.value = thisWidget.element;
+
+    thisWidget.value = thisWidget.dom.input.value;
+    console.log(thisWidget.value);
+
   }
   initPlugin(){
     const thisWidget = this;
-    rangeSlider.create(thisWidget.dom.input,thisWidget.dom.output);
+    rangeSlider.create(thisWidget.dom.input);
     thisWidget.dom.input.addEventListener('input', function(){
-      thisWidget.element = thisWidget.value;
+      thisWidget.value = thisWidget.dom.input.value;
     });
-
   }
   parseValue(value){
-    return utils.numberToHour(value);
+    const thisWidget = this;
+    thisWidget.time = utils.numberToHour(value);
+    console.log(thisWidget.time);
+
   }
   isValid(value){
     return (value);
   }
   renderValue(){
     const thisWidget = this;
-    return thisWidget.value;
+    //return thisWidget.time;
+    thisWidget.dom.output = thisWidget.value;
   }
 }
 export default HourPicker;

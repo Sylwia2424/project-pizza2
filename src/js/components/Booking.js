@@ -1,21 +1,75 @@
-import {select, templates} from './../settings.js';
+import {select, templates, /*settings, classNames*/} from './../settings.js';
 import utils from './../utils.js';
 import AmountWidget from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
+//import { promises } from 'dns';
+//import { settings } from 'cluster';
 
 
 class Booking{
   constructor(container){
-    //super(container, select.widgets.datePicker.wrapper);
 
     const thisBooking = this;
     
 
     thisBooking.render(container);
     thisBooking.initWidgets();
+    //thisBooking.getData();
+
 
   }
+  /*getData(){
+    const thisBooking = this;
+
+    const startDateParam = settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.datePicker.minDate);
+    const endDayParam = settings.db.dateEndtParamKey + '=' + utils.dateToStr(thisBooking.datePicker.maxDate);
+
+
+    const params = {
+      booking: [
+        startDateParam,
+        endDayParam,
+      ],
+      eventsCurrent: [
+        settings.db.notRepeatParam,
+        startDateParam,
+        endDayParam,
+      ],
+      eventsRepeat: [
+        settings.db.repeatParam,
+        endDayParam,
+      ],
+    };
+    //console.log('getData params', params);
+    const urls = {
+      booking:       select.db.url + '/' + settings.db.booking + '?' + params.booking.join('&'),
+      eventsCurrent: select.db.url + '/' + settings.db.event + '?' + params.eventsCurrent.join('&'),
+      eventsRepeat:  select.db.url + '/' + settings.db.event + '?' + params.eventsRepeat.join('&'),
+    };
+
+    Promise.all([
+      fetch(urls.booking),
+      fetch(urls.eventsCurrent),
+      fetch(urls.eventsRepeat),
+    ])
+    .then(function(allResponses){
+      const bookingsResponse = allResponses[0];
+      const eventsCurrentResponse = allResponses[1];
+      const eventsRepeatResponse = allResponses[2];
+      return Promises.all([
+        bookingsResponse.json(),
+        eventsCurrentResponse.json(),
+        eventsRepeatResponse.json(),
+      ]);
+    })
+    .then(function([bookings, eventsCurrent, eventsRepeat]){
+      console.log(bookings);
+      console.log(eventsCurrent);
+      console.log(eventsRepeat);
+    })
+
+  }*/
   /*parseData(bookings, eventsCurrent, eventRepeat){
     const thisBooking = this;
 
@@ -73,7 +127,37 @@ class Booking{
     thisBooking.HourPicker = new HourPicker(thisBooking.dom.hourPicker);
   }
   /*updateDOM(){
+    const thisBooking = this;
 
+    thisBooking.date = thisBooking.datePicker.value;
+    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+
+    let allAvailable = false;
+
+    if(
+      typof thisBooking.booked[thisBooking.date] == 'undefined'
+      ||
+      typeof thisBooking.booked[thisBooking.date][thisBooking.hour] == "undefined"
+    ){
+      allAvailable = true;
+    }
+
+    for(let table of thisBooking.dom.tables){
+      let tableId = table.getAttribute(settings.booking.tableIdAttribute);
+      if(!isNaN(tableId)){
+        tableId = parseInt(tableId);
+      }
+
+      if(
+        !allAvailable
+        &&
+        thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId) > -1
+      ){
+        table.classList.add(classNames.booking.tableBooked);
+      } else {
+        table.classList.remove(classNames.booking.tableBooked);
+      }
+    }
   }*/
 }
 export default Booking;
