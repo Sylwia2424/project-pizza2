@@ -42,32 +42,32 @@ class Booking{
       ],
     };
     console.log('getData params', params);
-    const urls = {
+    /*const urls = {
       booking:       select.db.url + '/' + settings.db.booking + '?' + params.booking.join('&'),
       eventsCurrent: select.db.url + '/' + settings.db.event + '?' + params.eventsCurrent.join('&'),
       eventsRepeat:  select.db.url + '/' + settings.db.event + '?' + params.eventsRepeat.join('&'),
-    };
+    };*/
 
-    Promise.all([
+    /*Promise.all([
       fetch(urls.booking),
       fetch(urls.eventsCurrent),
       fetch(urls.eventsRepeat),
     ])
-    .then(function(allResponses){
-      const bookingsResponse = allResponses[0];
-      const eventsCurrentResponse = allResponses[1];
-      const eventsRepeatResponse = allResponses[2];
-      return Promises.all([
-        bookingsResponse.json(),
-        eventsCurrentResponse.json(),
-        eventsRepeatResponse.json(),
-      ]);
-    })
-    .then(function([bookings, eventsCurrent, eventsRepeat]){
-      console.log(bookings);
-      console.log(eventsCurrent);
-      console.log(eventsRepeat);
-    })
+      .then(function(allResponses){
+        const bookingsResponse = allResponses[0];
+        const eventsCurrentResponse = allResponses[1];
+        const eventsRepeatResponse = allResponses[2];
+        return Promises.all([
+          bookingsResponse.json(),
+          eventsCurrentResponse.json(),
+          eventsRepeatResponse.json(),
+        ]);
+      })
+      .then(function([bookings, eventsCurrent, eventsRepeat]){
+        console.log(bookings);
+        console.log(eventsCurrent);
+        console.log(eventsRepeat);
+      });*/
 
   }
   parseData(bookings, eventsCurrent, eventsRepeat){
@@ -90,7 +90,7 @@ class Booking{
         }
       }
     }
-    console.log('thisBooking.booked', thisBooking.booked)
+    console.log('thisBooking.booked', thisBooking.booked);
   }
 
   makeBooked(date, hour, duration, table){
@@ -144,7 +144,7 @@ class Booking{
     if(
       typeof thisBooking.booked[thisBooking.date] == 'undefined'
       ||
-      typeof thisBooking.booked[thisBooking.date][thisBooking.hour] == "undefined"
+      typeof thisBooking.booked[thisBooking.date][thisBooking.hour] == 'undefined'
     ){
       allAvailable = true;
     }
