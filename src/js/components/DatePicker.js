@@ -19,8 +19,8 @@ class DatePicker extends BaseWidget{
     const thisWidget = this;
 
     thisWidget.minDate = new Date(thisWidget.value);
-    thisWidget.maxDate >= thisWidget.minDate == settings.datePicker.maxDaysInFuture;
-    thisWidget.addDays = utils.addDays(thisWidget.minDate);
+    thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture);
+    //thisWidget.addDays = utils.addDays(thisWidget.minDate);
 
     let calendar = flatpickr(thisWidget.dom.input, {
       
@@ -36,8 +36,8 @@ class DatePicker extends BaseWidget{
         'firstDayOfWeek': 1 // start week on 
 
       },
-      onChange: function() {
-        thisWidget.value = thisWidget.addDays;
+      onChange: function(dateStr) {
+        thisWidget.value = dateStr;
         //...
       },
     });
