@@ -180,7 +180,7 @@ class Booking{
       console.log(thisBooking.dom.tables[i]);
 
       thisBooking.dom.tables[i].addEventListener('click', function(){
-        thisBooking.dom.tables[i].classList.toggle(classNames.booking. tableBooked);
+        thisBooking.dom.tables[i].classList.toggle(classNames.booking.tableBooked);
       });
     }
     thisBooking.dom.wrapper.addEventListener('submit', function(event){
@@ -198,7 +198,19 @@ class Booking{
       table: thisBooking.dom.table,
       booking: [],
     };
-    for(let booking of thisBooking.wrapper){
+    const formData = utils.serializeFormToObject(thisBooking.dom.tables);
+
+    for(let booking of thisBooking.dom.tables){
+      const table = thisBooking.dom.tables[booking];
+      console.log(table);
+      const tableSelected = formData.hasOwnProperty(table) && formData[table].indexOf(table) > -1;
+      if(tableSelected && !table.default){
+        thisBooking.initActions();
+
+      } else if (!tableSelected && table.default){
+        console.log(table);
+      }
+
       payload.wrapper.push(booking.getData());
 
     }

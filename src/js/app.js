@@ -17,7 +17,7 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
-
+    //thisApp.navLinks = document.querySelectorAll(select.new.link);
     const idFromHash = window.location.hash.replace('#/', '');
     let pageMatchingHash = thisApp.pages[0].id;
 
@@ -27,7 +27,6 @@ const app = {
         break;
       }
     }
-
     thisApp.activatePage(pageMatchingHash);
 
     for(let link of thisApp.navLinks){

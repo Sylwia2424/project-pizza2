@@ -67,6 +67,9 @@ export const select = {
   nav: {
     links: '.main-nav a',
   },
+  new: {
+    link: '.card nav',
+  },
 };
   
 export const classNames = {

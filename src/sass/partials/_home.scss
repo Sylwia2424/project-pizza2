@@ -28,11 +28,23 @@
   }
 }
 
-i{
-  color: red;
-}
 
 .tiles{
-  justify-content: center;
-  text-align: right;
+  padding-left: 40%;
+  padding-top: 45%;
+  opacity: 0,5;
+
+  i:hover{
+   
+    font-size: 26px;
+    color: red;
+  }
+
+}
+
+
+.top:hover{
+  padding-top: 30%;
+  padding-left: 20%;
+  color: white;
 }
