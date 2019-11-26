@@ -15,6 +15,14 @@
   object-fit: cover;
 }
 
+.card img::after {
+  background: black;
+  opacity: 0,5;
+  width: 100%;
+  height: 100%;
+ 
+}
+
 .carousel-caption {
   left: 65%;
   top: 30%;
@@ -30,7 +38,7 @@
 }
 
 
-.tiles{
+.tiles {
   padding-left: 40%;
   padding-top: 45%;
   opacity: 0,5;
@@ -52,5 +60,5 @@
 }
 
 .nav:hover {
-  transform:translate(50px, 20px)
+  transform: translate(50px, 20px);
 }
