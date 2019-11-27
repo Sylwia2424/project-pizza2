@@ -121,6 +121,9 @@ class Booking{
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
+    thisBooking.dom.time = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.output);
+    thisBooking.dom.people = thisBooking.dom.wrapper.querySelector(select.widgets.amount.input);
+    console.log(thisBooking.dom.time);
   }
 
   initWidgets(){
@@ -193,26 +196,18 @@ class Booking{
     const url = settings.db.url + '/' + settings.db.booking;
     console.log(url);
     const payload = {
-      peopleAmount: thisBooking.dom.peopleAmount,
-      hoursAmount: thisBooking.dom.hoursAmount,
-      table: thisBooking.dom.table,
+      peopleAmount: thisBooking.dom.people.innerHTML,
+      time: thisBooking.dom.time.innerHTML,
+      table: [],
       booking: [],
     };
-    const formData = utils.serializeFormToObject(thisBooking.dom.tables);
+    //const formData = utils.serializeFormToObject(thisBooking.dom.tables);
 
     for(let booking of thisBooking.dom.tables){
-      const table = thisBooking.dom.tables[booking];
-      console.log(table);
-      const tableSelected = formData.hasOwnProperty(table) && formData[table].indexOf(table) > -1;
-      if(tableSelected && !table.default){
-        thisBooking.initActions();
-
-      } else if (!tableSelected && table.default){
-        console.log(table);
+      //console.log(table);
+      if(booking.classList.contains('tableBooked')){
+        payload.table.push(settings.booking.tableIdAttribute);
       }
-
-      payload.wrapper.push(booking.getData());
-
     }
     console.log(payload);
     const options = {
