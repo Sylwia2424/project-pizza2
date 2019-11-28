@@ -68,6 +68,7 @@ class Booking{
         console.log(bookings);
         console.log(eventsCurrent);
         console.log(eventsRepeat);
+        thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
       });
 
   }
@@ -103,8 +104,9 @@ class Booking{
     const startHour = utils.hourToNumber(hour);
 
     for(let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5){
-      if(typeof thisBooking.booked[date][startHour] == 'undefined'){
-        thisBooking.booked[date][startHour] = [];
+      //console.log('loop', hourBlock);
+      if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
+        thisBooking.booked[date][hourBlock] = [];
       }
       thisBooking.booked[date][hourBlock].push(table);
     }
@@ -123,7 +125,6 @@ class Booking{
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.time = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.output);
     thisBooking.dom.people = thisBooking.dom.wrapper.querySelector(select.widgets.amount.input);
-    console.log(thisBooking.dom.time);
   }
 
   initWidgets(){
@@ -185,6 +186,7 @@ class Booking{
       thisBooking.dom.tables[i].addEventListener('click', function(){
         thisBooking.dom.tables[i].classList.toggle(classNames.booking.tableBooked);
       });
+     
     }
     thisBooking.dom.wrapper.addEventListener('submit', function(event){
       event.preventDefault();
@@ -196,7 +198,7 @@ class Booking{
     const url = settings.db.url + '/' + settings.db.booking;
     console.log(url);
     const payload = {
-      peopleAmount: thisBooking.dom.people.innerHTML,
+      peopleAmount: thisBooking.dom.people.value,
       time: thisBooking.dom.time.innerHTML,
       table: [],
       booking: [],
@@ -205,7 +207,7 @@ class Booking{
 
     for(let booking of thisBooking.dom.tables){
       //console.log(table);
-      if(booking.classList.contains('tableBooked')){
+      if(booking.classList.contains(classNames.booking.tableBooked)){
         payload.table.push(settings.booking.tableIdAttribute);
       }
     }
