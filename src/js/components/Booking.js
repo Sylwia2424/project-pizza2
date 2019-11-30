@@ -154,7 +154,7 @@ class Booking{
     const thisBooking = this;
 
     thisBooking.date = thisBooking.datePicker.value;
-    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+    thisBooking.hour = utils.hourToNumber(thisBooking.dom.hourPicker.value);
 
     let allAvailable = false;
 
@@ -200,6 +200,7 @@ class Booking{
 
       thisBooking.dom.tables[i].addEventListener('click', function(){
         thisBooking.dom.tables[i].classList.toggle(classNames.booking.tableBooked);
+        
       });
       thisBooking.selectTable = thisBooking.dom.tables[i];
 
@@ -216,8 +217,8 @@ class Booking{
     const payload = {
       peopleAmount: thisBooking.dom.people.value,
       time: thisBooking.dom.time.innerHTML,
-      date: thisBooking.dom.datePicker.innerHTML,
-      duration: thisBooking.dom.hoursAmount.innerHTML,
+      date: thisBooking.datePicker.value,
+      duration: thisBooking.hoursAmount.value,
       table: thisBooking.selectTable.innerHTML,
       booking: [],
     };
