@@ -125,7 +125,7 @@ class Booking{
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
-    thisBooking.dom.time = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.output);
+    thisBooking.dom.hour = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.output);
     thisBooking.dom.people = thisBooking.dom.wrapper.querySelector(select.widgets.amount.input);
   }
 
@@ -142,7 +142,7 @@ class Booking{
     });
 
     thisBooking.dom.hourPicker.addEventListener('updated', function(){
-      thisBooking.updateDOM();
+      //thisBooking.updateDOM();
     });
     thisBooking.dom.datePicker.addEventListener('updated', function(){
       thisBooking.updateDOM();
@@ -216,7 +216,7 @@ class Booking{
     console.log(url);
     const payload = {
       peopleAmount: thisBooking.dom.people.value,
-      time: thisBooking.dom.time.innerHTML,
+      hour: thisBooking.dom.hour.innerHTML,
       date: thisBooking.datePicker.value,
       duration: thisBooking.hoursAmount.value,
       table: thisBooking.selectTable.innerHTML,

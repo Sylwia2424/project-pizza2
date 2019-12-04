@@ -11,16 +11,13 @@ class DatePicker extends BaseWidget{
 
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.datePicker.input);
     thisWidget.initPlugin();
-    //thisWidget.parseValue();
-    //thisWidget.isValid();
-    //thisWidget.renderValue();
   }
+
   initPlugin(){
     const thisWidget = this;
 
     thisWidget.minDate = new Date(thisWidget.value);
     thisWidget.maxDate = utils.addDays(thisWidget.minDate, settings.datePicker.maxDaysInFuture);
-    //thisWidget.addDays = utils.addDays(thisWidget.minDate);
 
     let calendar = flatpickr(thisWidget.dom.input, {
       
@@ -44,14 +41,14 @@ class DatePicker extends BaseWidget{
     console.log(calendar);
   }
 
-  parseValue(){
-    return parseInt();
+  parseValue(value){
+    return value;
   }
-  isValid(value){
-    return (value);
+  isValid(){
+    return true;
   }
   renderValue(){
-
+    return null;
   }
 }
 export default DatePicker;
