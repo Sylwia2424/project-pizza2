@@ -18,8 +18,8 @@
     <div class="container">
       <div class="header__wrapper">
         <div class="logo">
-          <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
-          <h2 class="logo__subtitle">the best homemade Italian food</h2>
+          <h1 class="logo__title"><span>Italian</span>Pizza!</h1>
+          <h2 class="logo__subtitle">homemade food</h2>
         </div>
         <div class="main-nav">
           <a href="#home">Home</a>
@@ -66,7 +66,15 @@
       <div class="container m-0-2">
         <div class="container">
         <div class="row">
-          <div class="col-6 card position-relative p-0">
+          <div class="col-4 card position-relative p-0" >
+            <img src="https://i.postimg.cc/nz7vcgyY/pexels-photo-2918521.jpg" alt="pizza">
+            <div class="card-body">
+              <div class="main-nav link">
+                <a href="#about us" class="nav">About us</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-4 card position-relative p-0">
             <img src="https://i.postimg.cc/MHFQ2DbB/pizza-1.jpg" alt="pizza">
             <div class="card-body">
               <div class="main-nav">
@@ -74,7 +82,7 @@
               </div>
             </div>
           </div>
-          <div class="col-6 card position-relative p-0" >
+          <div class="col-4 card position-relative p-0" >
             <img src="https://i.postimg.cc/fRRM09X3/pizza-8.jpg" alt="pizza">
             <div class="card-body">
               <div class="main-nav link">
@@ -100,21 +108,21 @@
             
           <div class="carousel-inner">
             <div class="carousel-item active position-relative">
-              <img class="w-50" src="https://i.postimg.cc/MHFQ2DbB/pizza-1.jpg" alt="image">
+              <img class="w-100" src="https://i.postimg.cc/MHFQ2DbB/pizza-1.jpg" alt="image">
               <div class="carousel-caption position-absolute ">
                 <h3>Homemade Pizza</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper lorem interdum.</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img class="w-50" src="https://i.postimg.cc/JzqBRMqm/pizza-3.jpg" alt="image">
+              <img class="w-100" src="https://i.postimg.cc/JzqBRMqm/pizza-3.jpg" alt="image">
               <div class="carousel-caption">
                 <h3>Service</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper lorem interdum.</p>
               </div>
             </div>
             <div class="carousel-item">
-              <img class="w-50" src="https://i.postimg.cc/XqfYxk13/pizza-2.jpg" alt="image">
+              <img class="w-100" src="https://i.postimg.cc/XqfYxk13/pizza-2.jpg" alt="image">
               <div class="carousel-caption">
                 <h3>Service</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper lorem interdum.</p>
@@ -135,22 +143,14 @@
       <div class="container">
         <div class="section pt-5">
         <div class="row">
-          <div class="col-4 card p-0">
-            <div class="overlay"></div>
-            <img src="https://i.postimg.cc/fRRM09X3/pizza-8.jpg" alt="pizza" class="square">
-            <div class=" tiles card-body position-absolute">
-                <i class="fas fa-heart "></i>
-                <i class="far fa-dot-circle"></i>
-              </div>
-          </div>
-          <div class="col-4 card p-0">
+          <div class="col-6 card p-0">
             <img src="https://i.postimg.cc/HkcPKW1Z/pizza-4.jpg" alt="pizza" class="square">
             <div class=" tiles card-body position-absolute">
                 <i class="fas fa-heart "></i>
                 <i class="far fa-dot-circle"></i>
               </div>
           </div>
-          <div class="col-4 card p-0">
+          <div class="col-6 card p-0">
             <img src="https://i.postimg.cc/dtd5mH2p/pizza-7.jpg" alt="pizza" class="square">
             <div class=" tiles card-body position-absolute">
                 <div class="overlay"></div>
@@ -190,6 +190,10 @@
           </div>
         </div>
     </section>
+    <section id="about">
+      <div id="about-us"></div>
+    </section>
+  
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -290,6 +294,14 @@
         <li><a href="#remove">Remove<i class="fas fa-trash-alt"></i></a></li>
       </ul>
     </li>
+  </script>
+
+  <script id="template-about-us" type="text/x-handlebars-template">
+    <article class="about">
+      <header class="about_header">
+        <h3 class="about_header_name"> About us</h3>
+      </header>
+    </article>
   </script>
 
   <script id="template-menu-product" type="text/x-handlebars-template">

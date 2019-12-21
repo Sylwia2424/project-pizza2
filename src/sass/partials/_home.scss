@@ -10,16 +10,17 @@
 }
 
 .carousel-caption {
-  left: 65%;
-  top: 30%;
+  //left: 65%;
+  //top: 30%;
   transform: translate(0, -50%);
 
   p {
-    color: black;
+    color: white;
   }
 
   h3 {
-    color: black;
+    color: white;
+    font-weight: bold;
   }
 }
 

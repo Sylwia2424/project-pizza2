@@ -200,7 +200,39 @@
           }
         }
       }
+    },
+    {
+      "id": "drinks",
+      "class": "small",
+      "name": "Zia Giulia's Drinks",
+      "price": 1,
+      "description": "Cold drinks",
+      "images": [
+        "<img class=\"active\" src=\"images/breakfast.svg\">"
+      ],
+      "params": {
+        "cold": {
+          "label": "cold drinks",
+          "type": "radios",
+          "options": {
+            "water": {
+              "label": "Water",
+              "price": 1,
+              "default": true
+            },
+            "cola": {
+              "label": "Cola",
+              "price": 1
+            },
+            "juice": {
+              "label": "Orange juice",
+              "price": 1
+            }
+          }
+        }
+      }
     }
+    
   ],
   "order": [],
   "event": [
