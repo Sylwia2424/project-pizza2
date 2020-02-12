@@ -59,7 +59,8 @@
         "<img class=\"toppings-redPeppers\" src=\"images/pizza/red-peppers.svg\">",
         "<img class=\"toppings-greenPeppers\" src=\"images/pizza/green-peppers.svg\">",
         "<img class=\"toppings-mushrooms\" src=\"images/pizza/mushrooms.svg\">",
-        "<img class=\"toppings-basil\" src=\"images/pizza/basil.svg\">"
+        "<img class=\"toppings-basil\" src=\"images/pizza/basil.svg\">",
+        "<img class=\"ingredients-tomatoes\" src=\"images/salad/tomatoes.svg\" style=\"z-index: 2;\">"
       ],
       "params": {
         "sauce": {
@@ -109,6 +110,11 @@
             "salami": {
               "label": "Salami",
               "price": 3
+            },
+            "tomatoes": {
+              "label": "Tomatoes",
+              "price": 1,
+              "default": true
             }
           }
         },
